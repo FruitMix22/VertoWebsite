@@ -1,0 +1,149 @@
+﻿@model VertoTask.Models.HomepageContent
+
+@{
+    ViewData["Title"] = "Edit Homepage Text";
+}
+
+<style>
+    form {
+        max-width: 700px;
+        margin: 1.5rem auto;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #333;
+    }
+    .success-message {
+        color: #2e7d32;
+        background-color: #e8f5e9;
+        border: 1px solid #a5d6a7;
+        padding: 0.75rem 1rem;
+        border-radius: 5px;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    fieldset {
+        border: 1px solid #ddd;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1.75rem;
+        border-radius: 6px;
+    }
+    legend {
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 0 0.5rem;
+        color: #555;
+    }
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        color: #444;
+    }
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 0.45rem 0.6rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-family: inherit;
+        box-sizing: border-box;
+        resize: vertical;
+        transition: border-color 0.25s ease;
+    }
+    input[type="text"]:focus,
+    textarea:focus {
+        border-color: #0078d7;
+        outline: none;
+    }
+    button {
+        background-color: #0078d7;
+        color: white;
+        padding: 0.6rem 1.4rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.05rem;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto 2rem;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #005ea1;
+    }
+</style>
+
+<h2>Edit Homepage Text</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="success-message">
+        @TempData["Success"]
+    </div>
+}
+
+<form asp-action="EditHomepageText" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <fieldset>
+        <legend>Section 1</legend>
+        <label asp-for="Section1_TextOverCarousel">Text Over Carousel</label>
+        <textarea asp-for="Section1_TextOverCarousel" rows="4"></textarea>
+    </fieldset>
+
+    <fieldset>
+        <legend>Section 2</legend>
+        <label asp-for="Section2_Title">Title</label>
+        <input asp-for="Section2_Title" type="text" />
+
+        <label asp-for="Section2_SubTitle">Subtitle</label>
+        <input asp-for="Section2_SubTitle" type="text" />
+
+        <label asp-for="Section2_ButtonText">Button Text</label>
+        <input asp-for="Section2_ButtonText" type="text" />
+    </fieldset>
+
+    <fieldset>
+        <legend>Section 3</legend>
+        <label asp-for="Section3_FloatingText">Floating Text</label>
+        <textarea asp-for="Section3_FloatingText" rows="3"></textarea>
+    </fieldset>
+
+    <fieldset>
+        <legend>Section 4</legend>
+        <label asp-for="Section4_GlobalText">Global Text</label>
+        <textarea asp-for="Section4_GlobalText" rows="3"></textarea>
+
+        <label asp-for="Section4_Image1Title">Image 1 Title</label>
+        <input asp-for="Section4_Image1Title" type="text" />
+
+        <label asp-for="Section4_Image1Description">Image 1 Description</label>
+        <textarea asp-for="Section4_Image1Description" rows="3"></textarea>
+
+        <label asp-for="Section4_Image2Title">Image 2 Title</label>
+        <input asp-for="Section4_Image2Title" type="text" />
+
+        <label asp-for="Section4_Image3Title">Image 3 Title</label>
+        <input asp-for="Section4_Image3Title" type="text" />
+    </fieldset>
+
+    <fieldset>
+        <legend>Section 5</legend>
+        <label asp-for="Section5_Title">Title</label>
+        <input asp-for="Section5_Title" type="text" />
+
+        <label asp-for="Section5_SubTitle">Subtitle</label>
+        <input asp-for="Section5_SubTitle" type="text" />
+
+        <label asp-for="Section5_Image1Text">Image 1 Text</label>
+        <textarea asp-for="Section5_Image1Text" rows="3"></textarea>
+
+        <label asp-for="Section5_Image2Text">Image 2 Text</label>
+        <textarea asp-for="Section5_Image2Text" rows="3"></textarea>
+    </fieldset>
+
+    <button type="submit">Save Changes</button>
+</form>

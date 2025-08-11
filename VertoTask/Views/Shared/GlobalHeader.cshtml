@@ -1,0 +1,43 @@
+﻿<header data-sticky-container>
+  <div class="sticky" data-sticky data-margin-top="0" data-stick-to="top"
+       style="width: 100%; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+
+    <!-- Top row -->
+    <div class="grid-x align-right" style="padding: 0.0rem 1rem;">
+      <div class="cell shrink" style="position: relative; display: inline-block;">
+         <img src="@Url.Content($"~/{Model.QuestionBoxPath}")" alt="Site Logo" style="max-height: 80px;" /> 
+        <span style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          white-space:nowrap;
+          transform: translate(-50%, -50%);
+          color: white;
+          font-weight: bold;
+          font-size: 0.9rem;
+        ">
+          Have a project?
+        </span>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="grid-x align-middle align-justify" style="padding: 0.75rem 1rem;">
+      <!-- Left side: logo -->
+      <div class="cell shrink">
+  <img src="@Url.Content($"~/{Model.LogoImagePath}")" 
+             alt="Site Logo" style="max-height: 60px;">
+      </div>
+
+      <!-- Right side: Links -->
+      <div class="cell auto text-right">
+        <ul class="menu align-right">
+          @foreach (var link in Model.HeaderLinks)
+          {
+            <li><a href="#" >@link</a></li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

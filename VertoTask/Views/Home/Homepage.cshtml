@@ -1,0 +1,338 @@
+﻿@model VertoTask.Models.HomepageContent
+@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+  /* Parent carousel container */
+  .hero-container {
+    position: relative;
+  }
+
+  /* Text overlay placed near the bottom left of images */
+  .image-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 70px;
+    max-width: 65%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: white;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  /* Big text on carousel images */
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(0.5rem, 5vw, 5rem);
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  /* Rounded corners on top for carousel wrapper */
+  .fade-top-rounded {
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Carousel images */
+  .fade img {
+    width: 100%;
+    height: 60vh; /*Fancy unit for height*/
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Slick slider dots*/
+  .slick-dots {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-5%);
+    z-index: 20;
+    border-radius: 15px;
+    padding: 5px 10px;
+    display: flex !important;
+    gap: 12px;
+    margin: 0;
+    list-style: none;
+  }
+
+  /* Each dot */
+  .slick-dots li {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* The clickable button inside each dot */
+  .slick-dots li button {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  /* picked dot styling */
+  .slick-dots li.slick-active button {
+    background: white;
+    border-color: white;
+  }
+
+  /* Remove default content before button */
+  .slick-dots li button:before {
+    content: "";
+  }
+
+  /* Images inside content grids, nicely centered and sized */
+  .content-image {
+    max-width: 85%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+  }
+
+  /*text over the button image */
+  .btn-container {
+    position: relative;
+    display: inline-block;
+    max-width: 200px;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  /* text on  buttons for section2 */
+  .btn-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  /* Remove default margins inside image overlays */
+  .image-overlay h2,
+  .image-overlay p {
+    margin: 0;
+  }
+
+  /* Headings inside overlays */
+  .image-overlay h2 {
+    font-size: 1.2rem;
+  }
+
+  /* Paragraphs inside overlays */
+  .image-overlay p {
+    font-size: 0.8rem;
+  }
+
+  /* Overlay stuff for big background image at  */
+  .section5-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+  }
+
+  /* Title text for Section 5 */
+  .section5-title {
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    color: white;
+  }
+
+  /* Subtitle text for Section 5 */
+  .section5-subtitle {
+    margin: 0;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: white;
+  }
+
+  /* Grouping the buttons side by side */
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+
+  /* Button images */
+  .button-img {
+    max-width: 200px;
+    height: auto;
+  }
+
+  /* Wrapper to help position text on buttons */
+  .button-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  /* Text on top of buttons in Section 5 */
+  .button-wrapper span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+</style>
+
+@* Main page wrapper container *@
+<div class="grid-container fluid">
+  <div class="grid-x grid-padding-x align-center margin-bottom-0">
+
+    <!-- The carousel at the top -->
+    <div class="cell small-12 medium-12 large-12 hero-container" style="padding-bottom: 0; margin-bottom: 0;">
+      <div class="fade fade-top-rounded" style="margin-bottom: 0;">
+        <div>
+          <img src="@Url.Content($"~/{Model.Section1_Image1Path}")" style="filter: brightness(75%) saturate(140%);" alt="Carousel Image 1" />
+        </div>
+        <div>
+          <img src="@Url.Content($"~/{Model.Section1_Image1Path}")" alt="Carousel Image 2" />
+        </div>
+        <div>
+          <img src="@Url.Content($"~/{Model.Section1_Image1Path}")" alt="Carousel Image 3" />
+        </div>
+      </div>
+
+      <span class="hero-text">@Model.Section1_TextOverCarousel</span>
+    </div>
+
+    <!-- Content section right below carousel -->
+    <div class="cell small-12 medium-10 large-12" style="padding-top: 0; margin-top: 0;">
+      <div class="grid-x align-middle" style="background: #F4F4F4; padding: 1rem; border-radius: 0 0 12px 12px; margin: 0;">
+
+        <!-- Left side: image -->
+        <div class="cell small-12 large-6" style="text-align: center;">
+          <img src="@Url.Content($"~/{Model.Section2_Image1Path}")" alt="Section Image" class="content-image" />
+        </div>
+
+        <!-- Right side: text + button -->
+        <div class="cell small-12 large-6" style="padding-left: 1rem; text-align: left;">
+          <h2 style="margin-top: 0;">@Model.Section2_Title</h2>
+          <p>@Model.Section2_SubTitle</p>
+
+          <!-- The clickable button -->
+          <div class="btn-container">
+            <img src="~/images/YellowRectangle.png" alt="Button Background" class="button-img" />
+            <span class="btn-text">@Model.Section2_ButtonText</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- That big floating text section -->
+    <div class="cell small-12 large-6" style="margin: 100px 0 50px; text-align: center;">
+      <h1>@Model.Section3_FloatingText</h1>
+    </div>
+
+    <!-- The image grid with overlays -->
+    <div class="grid-x grid-padding-x" style="justify-content: center;">
+      <!-- First image with title and description -->
+      <div class="cell small-12 medium-6 large-4" style="position: relative; max-width: 500px;">
+        <img src="@Url.Content($"~/{Model.Section4_Image1Path}")" alt="Image 1" class="content-image" />
+        <div class="image-overlay">
+          <h2>@Model.Section4_Image1Title</h2>
+          <p>@Model.Section4_Image1Description</p>
+          <p style="font-size: 0.8rem;">@Model.Section4_GlobalText</p>
+        </div>
+      </div>
+
+      <!-- Second image, hidden on small screens -->
+      <div class="cell small-12 medium-6 large-4 hide-for-small-only" style="position: relative; max-width: 500px;">
+        <img src="@Url.Content($"~/{Model.Section4_Image1Path}")" alt="Image 2" class="content-image" />
+        <div class="image-overlay">
+          <h2>@Model.Section4_Image2Title</h2>
+          <p style="font-size: 0.8rem;">@Model.Section4_GlobalText</p>
+        </div>
+      </div>
+
+      <!-- Third image, only visible on large screens -->
+      <div class="cell small-12 medium-6 large-4 show-for-large" style="position: relative; max-width: 500px;">
+        <img src="@Url.Content($"~/{Model.Section4_Image1Path}")" alt="Image 3" class="content-image" />
+        <div class="image-overlay">
+          <h2>@Model.Section4_Image3Title</h2>
+          <p style="font-size: 0.8rem;">@Model.Section4_GlobalText</p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Row of icons below the images -->
+    <div class="grid-x align-middle" style="background: rgba(42, 67, 81, 1); padding-top: 5rem; border-radius: 12px 12px 0 0; margin: 20px 0 0 0;">
+      <div class="cell small-12" style="padding-bottom: 5rem;">
+        <div class="grid-x align-middle">
+          <div class="cell small-12 medium-3 large-3">
+            <img src="~/images/Group 456.png" alt="Icon 1" class="content-image" />
+          </div>
+          <div class="cell small-12 medium-3 large-3">
+            <img src="~/images/Group 457.png" alt="Icon 2" class="content-image" />
+          </div>
+          <div class="cell small-12 medium-3 large-3">
+            <img src="~/images/Group 458.png" alt="Icon 3" class="content-image" />
+          </div>
+          <div class="cell small-12 medium-3 large-3">
+            <img src="~/images/Group 459.png" alt="Icon 4" class="content-image" />
+          </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Big background image with overlay text and buttons -->
+    <div class="cell" style="position: relative; height: 800px;">
+      <img src="~/images/image1.png" alt="Background" class="crop-mobile" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+
+      <div class="section5-overlay">
+        <div class="cell" style="padding-top: 10rem;">
+          <h2 class="section5-title">@Model.Section5_Title</h2>
+          <p class="section5-subtitle">@Model.Section5_SubTitle</p>
+
+          <div class="button-group">
+            <div class="button-wrapper">
+              <img src="~/images/BlueRectangle.png" alt="Button 1" class="button-img" />
+              <span>@Model.Section5_Image1Text</span>
+            </div>
+
+            <div class="button-wrapper">
+              <img src="~/images/YellowRectangle.png" alt="Button 2" class="button-img" />
+              <span>@Model.Section5_Image2Text</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
